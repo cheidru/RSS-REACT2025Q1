@@ -5,7 +5,7 @@ export default class Header extends React.Component {
     return (
       <header className='header'>
         <div className='header-wrapper'>
-          <div className='header-title'>Search API</div>
+          <div className='header-title'>Search SWAPI (The Star Wars API)</div>
         </div>
       </header>
     )
