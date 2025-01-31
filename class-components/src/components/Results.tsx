@@ -18,13 +18,11 @@ export default class Results extends React.Component<Props> {
           <p>Cost: {card.cost_in_credits}</p>
       </div>);
     return (
-      <>
-        <div className="panel result-panel">
+        <section className="result-panel">
           <div className="result-wrapper">
             {items}
           </div>
-        </div>
-      </>
+        </section>
     )
   }
 }
