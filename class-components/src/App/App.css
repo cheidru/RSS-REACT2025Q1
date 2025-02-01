@@ -23,6 +23,14 @@ body {
   text-align: center;
 }
 
+h2 {
+  font-size: 1rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
 header {
   width: 100%;
   height: auto;
@@ -49,6 +57,7 @@ header {
 }
 
 main {
+  min-height: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -95,8 +104,11 @@ button:disabled {
 .result-panel {
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: start;
   padding: 10px;
-  background-color: rgb(248, 228, 211);  
+  background-color: rgb(248, 228, 211);
+  overflow: hidden;
 }
 
 .result-wrapper {
@@ -106,15 +118,19 @@ button:disabled {
   justify-content: start;
   flex-wrap: wrap;
   gap: 10px;
+  overflow: auto;
 }
 
 .card-wrapper {
+  width: 20rem;
+  height: 10rem;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: start;
+  text-align: left;
   gap: 5px;
-  padding: 15px;
+  padding: 5px 10px;
   color: rgb(57, 57, 57);
   background-color: rgb(214, 249, 237);
   border-radius: 10px;

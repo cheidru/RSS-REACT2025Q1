@@ -7,15 +7,16 @@ export interface SearchProps {
 }
 
 export type searchData = {
-  name?: string;
-  model?: string;
-  manufacturer?: string;
-  cost_in_credits?: number;
-  cargo_capacity?: number;
-  films?: string[];
+  title: string;
+  param1: string;
+  param2: string;
+  param3: string;
+  param4: string;
+  //param5?: string[];
 }
 
 export type Props = {
   searchResult?: searchData[];
-  handleSearchResultChange?: (data:[]) => void;
+  searchString?: string;
+  handleSearchResultChange?: (data:[], searchStr: string) => void;
 }

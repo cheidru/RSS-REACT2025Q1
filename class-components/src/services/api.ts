@@ -235,7 +235,10 @@
 
 
 export default async function apiSearch(searchString: string) {
-  const data = fetch('https://swapi.dev/api/' + searchString);
+  const searchStr = searchString.length > 0 ?
+                    'https://swapi.dev/api/' + searchString :
+                    'https://swapi.dev/api/';
+  const data = fetch(searchStr);
   const data_1 = await data;
   const data_2 = await data_1.json();
   return data_2.results;

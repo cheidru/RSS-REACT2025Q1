@@ -1,7 +1,10 @@
 import React from "react";
 import apiSearch from "../services/api";
-import { Props } from "../services/interface"
+import { Props, searchData } from "../services/interface"
 import { readLocalStorage, writeLocalStorage } from "../services/localStoreage"
+import formatResult from "../services/format"
+
+
 export default class Search extends React.Component<Props> {
   state = {
     isSubmitDisabled: true,
@@ -20,25 +23,28 @@ export default class Search extends React.Component<Props> {
   }
 
   handleClick(searchString: string) {
-    console.log(searchString);
-    writeLocalStorage(JSON.stringify(searchString));
-    const seekResult = apiSearch(this.state.value.trim());
-    seekResult.then(data => { 
-      if(this.props.handleSearchResultChange) this.props.handleSearchResultChange(data);
-      console.log(seekResult);
+    if(searchString.length > 0) writeLocalStorage(JSON.stringify(searchString));
+    const seekResult = apiSearch(searchString);
+    seekResult.then(data => {
+      // if(this.props.handleSearchResultChange) this.props.handleSearchResultChange(data, searchString);
+      const pattern: searchData = formatResult(searchString);
+      const result = data.map((item:object) => (
+        {
+          title: `${pattern.title}: ${item[pattern.title as keyof object]}`,
+          param1: `${pattern.param1}: ${item[pattern.param1 as keyof object]}`,
+          param2: `${pattern.param2}: ${item[pattern.param2 as keyof object]}`,
+          param3: `${pattern.param3}: ${item[pattern.param3 as keyof object]}`,
+          param4: `${pattern.param4}: ${item[pattern.param4 as keyof object]}`
+        }
+      ));
+      if(this.props.handleSearchResultChange) this.props.handleSearchResultChange(result, searchString);
     });
-      
-    // this.setState({isSubmitDisabled: true});
-    // this.setState({inputFocused: false});
-    // this.setState({value: ''});
-
     // fetch запрос к API и обновление массива searchResult
     // если нет строки запроса, проверка LS, если нет
     // записи в LS, запрос на все записиа API
   }
 
   render() {
-    console.log('this.state=',this.state);
     return (
       <section className="search-panel">
         <input
@@ -57,7 +63,7 @@ export default class Search extends React.Component<Props> {
       />
       <button
         className="btn-submit"
-        onClick={() => this.handleClick(this.state.value)}
+        onClick={() => this.handleClick(this.state.value.trim())}
       > 
         Search
       </button>
