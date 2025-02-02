@@ -1,6 +1,20 @@
 import { searchData } from "../services/interface"
 
-export default function formatResult(searchStr: string) {
+export default function mapResult(data:[], searchString: string) {
+  const pattern: searchData = formatResult(searchString);
+  const result: searchData[] = data.map((item:object) => (
+    {
+      title: `${pattern.title}: ${item[pattern.title as keyof object]}`,
+      param1: `${pattern.param1}: ${item[pattern.param1 as keyof object]}`,
+      param2: `${pattern.param2}: ${item[pattern.param2 as keyof object]}`,
+      param3: `${pattern.param3}: ${item[pattern.param3 as keyof object]}`,
+      param4: `${pattern.param4}: ${item[pattern.param4 as keyof object]}`
+    }
+  ));
+  return result
+}
+
+function formatResult(searchStr: string) {
   let result :searchData = {
     title: "",
     param1: "",

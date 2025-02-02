@@ -5,7 +5,7 @@ export default class Results extends React.Component<Props> {
   render() {
     let searchRes = undefined;
     if (this.props.searchResult !== undefined) searchRes = this.props.searchResult;
-    console.log(searchRes);
+    console.log('searchRes = ', searchRes, Array.isArray(searchRes));
 
     const items = searchRes?.map((card, index) => 
       <div 
@@ -17,6 +17,8 @@ export default class Results extends React.Component<Props> {
           <p>{card.param3}</p>
           <p>{card.param4}</p>
       </div>);
+
+      console.log('items =', items);
     return (
         <section className="result-panel">
           <div className="result-wrapper">
