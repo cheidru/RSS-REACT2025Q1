@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export type searchData = {
   title: string;
   param1: string;
@@ -10,4 +12,8 @@ export type Props = {
   searchResult?: searchData[];
   searchString?: string;
   handleSearchResultChange?: (data: searchData[], searchStr: string) => void;
+}
+
+export type ErrorBoundaryProp = {
+  children: ReactElement;
 }

@@ -9,18 +9,18 @@ export default class Search extends React.Component<Props> {
     value: readLocalStorage()?.replace(/"/g, '') || ''
   }
 
-  async handleClick(searchString: string) {
-    writeLocalStorage(JSON.stringify(searchString));
-    await apiSearch(searchString).
-    then(data => {
+  handleClick() {
+    writeLocalStorage(JSON.stringify(this.state.value.trim()));
+    apiSearch(this.state.value.trim()).
+    then(data  => {
       if(this.props.handleSearchResultChange) {
-        this.props.handleSearchResultChange(data, searchString);
+        this.props.handleSearchResultChange(data, this.state.value.trim());
       }})
   }
 
 
   componentDidMount() {
-    this.handleClick(this.state.value)
+    this.handleClick()
   }
 
   render() {
@@ -41,7 +41,7 @@ export default class Search extends React.Component<Props> {
       />
       <button
         className="btn-submit"
-        onClick={() => this.handleClick(this.state.value.trim())}
+        onClick={() => this.handleClick()}
       > 
         Search
       </button>

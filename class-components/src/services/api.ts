@@ -9,7 +9,6 @@ export default async function apiSearch(searchString: string) {
     // console.log('data_1 =',  Array.isArray(data_1))
     return result
   } else {
-
     const endPoints = ["people", "planets", "films", "species", "vehicles", "starships"];
     const apiCalls = endPoints.map(endpoint => fetch('https://swapi.dev/api/' + endpoint))
     Promise.all(apiCalls).
@@ -17,13 +16,11 @@ export default async function apiSearch(searchString: string) {
       then(resp => Promise.all(resp.map(data => data.json()))).
       then(resp => {
         resp.map((endpoint, index) => {
-          result.push(...mapResult(endpoint.results, endPoints[index]));
-        return result;})
-        });
-      // console.log('result =', Array.isArray(result));
-      return result;
+          console.log('apiSearchRes = ', result);
+          result.push(...mapResult(endpoint.results, endPoints[index]))
+          return result;
+      })
+    })
+    return result
   }
-
-
-
 }

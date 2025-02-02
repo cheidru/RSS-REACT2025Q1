@@ -5,7 +5,7 @@ import Results from "../components/Results";
 import Footer from "../components/Footer";
 import React from "react";
 import { Props, searchData } from "../services/interface"
-
+import ErrorBoundary from "../components/ErrorBoundary.tsx"
 export default class App extends React.Component<Props> {
   state: Props = {
     searchResult: [],
@@ -18,10 +18,12 @@ export default class App extends React.Component<Props> {
       searchString: searchStr,
     });
   }
+
   render() {
+    console.log('searchResult =', this.state.searchResult);
     return (
       <>
-        <Header />
+      <Header />
         <main>
           <Search
             {...{handleSearchResultChange: this.handleSearchResultChange}}
@@ -30,10 +32,11 @@ export default class App extends React.Component<Props> {
             {...{searchResult: this.state.searchResult}}
           />
         </main>
-        <Footer />
-      </>
+        <ErrorBoundary>
+          <Footer />
+        </ErrorBoundary>
 
-      
+      </>      
     )
   }
 }
