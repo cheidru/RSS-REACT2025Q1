@@ -73,7 +73,7 @@ main {
   gap: 20px;
   justify-content: center;
   align-items: center;
-  background-color:rgb(225, 167, 163);
+  background-color: rgb(225, 167, 163);
 }
 
 .search-field {
@@ -176,4 +176,74 @@ footer {
   color: antiquewhite;
   background-color: rgb(210, 31, 31);
   border-radius: 15px;
+}
+
+.spinner-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.spinner-container {
+  top: 50vh;
+  left: 50vw;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 4rem;
+  /* background-color: rgba(186, 60, 155, 0.2); */
+  border-radius: 30px;
+  transform: translate(-50%, -150%);
+}
+
+.spinner-element {
+  width: 1rem;
+  height: 1rem;
+  transition: all 1s;
+}
+
+@keyframes color-change1 {
+  0% {
+    background-color: rgb(28, 96, 28);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes color-change2 {
+  0% {
+    background-color: rgba(28, 96, 28, 0.5);
+  }
+  50% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgb(28, 96, 28);
+  }
+}
+
+@keyframes color-change3 {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgb(28, 96, 28);
+  }
+}
+
+.spinner-element:nth-child(1) {
+  animation: color-change1 1s infinite;
+}
+
+.spinner-element:nth-child(2) {
+  animation: color-change2 1s infinite;
+}
+
+.spinner-element:nth-child(3) {
+  animation: color-change3 1s infinite;
 }

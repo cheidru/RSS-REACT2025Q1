@@ -1,11 +1,11 @@
-import React, { ErrorInfo } from "react";
-import { ErrorProps, ErrorState } from "../services/interface";
-
-
-export default class ErrorBoundary extends React.Component<ErrorProps, ErrorState> {
+import React, { ErrorInfo } from 'react';
+import { ErrorProps, ErrorState } from '../services/interface';
+export default class ErrorBoundary extends React.Component<
+  ErrorProps,
+  ErrorState
+> {
   constructor(props: ErrorProps) {
     super(props);
-    // initialize the error state
     this.state = { hasError: false };
   }
 
@@ -22,11 +22,10 @@ export default class ErrorBoundary extends React.Component<ErrorProps, ErrorStat
       return (
         <div className="error-container">
           <div className="error-wrapper">
-          <h1>Error was thrown!</h1>
+            <h1>Error was thrown!</h1>
           </div>
         </div>
-
-      )
+      );
     }
     return this.props.children;
   }

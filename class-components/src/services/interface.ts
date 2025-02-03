@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export type searchData = {
   title: string;
@@ -6,18 +6,21 @@ export type searchData = {
   param2: string;
   param3: string;
   param4: string;
-}
+};
 
 export type Props = {
   searchResult?: searchData[];
-  searchString?: string;
+  spinnerActive?: boolean;
+  // searchString?: string;
+  children?: ReactNode;
   handleSearchResultChange?: (data: searchData[], searchStr: string) => void;
-}
+  turnSpinnerOnOff?: (spinnerActive: boolean) => void;
+};
 
 export type ErrorProps = {
   children: ReactNode;
-}
+};
 
 export type ErrorState = {
-  hasError: boolean
-}
+  hasError: boolean;
+};
