@@ -13,7 +13,7 @@ export default class Search extends React.Component<Props> {
     writeLocalStorage(JSON.stringify(this.state.value.trim()));
     apiSearch(this.state.value.trim()).
     then(data  => {
-      if(this.props.handleSearchResultChange) {
+      if(this.props.handleSearchResultChange && data) {
         this.props.handleSearchResultChange(data, this.state.value.trim());
       }})
   }

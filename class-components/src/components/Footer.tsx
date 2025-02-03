@@ -1,10 +1,21 @@
 import React from "react";
 
 export default class Footer extends React.Component {
-  throwError() {
-    console.log('Error shoud be thrown');
-    throw new Error("Error is generated");
+  state = {
+    shootError: false,
   }
+  throwError() {
+    this.setState({shootError: true})
+  }
+
+  componentDidUpdate() {
+    if(this.state.shootError) {
+    console.log('Error is thrown');
+    throw new Error("Error is generated");
+    }
+  }
+
+
   render() {
     return (
       <footer className='footer'>

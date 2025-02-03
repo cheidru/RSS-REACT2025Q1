@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 
 export type searchData = {
   title: string;
@@ -14,6 +14,10 @@ export type Props = {
   handleSearchResultChange?: (data: searchData[], searchStr: string) => void;
 }
 
-export type ErrorBoundaryProp = {
-  children: ReactElement;
+export type ErrorProps = {
+  children: ReactNode;
+}
+
+export type ErrorState = {
+  hasError: boolean
 }
