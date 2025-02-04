@@ -1,1 +1,1 @@
-npx lint-staged --concurrent false --config .lintstaged/pre-commit
+npm run lint:fix
