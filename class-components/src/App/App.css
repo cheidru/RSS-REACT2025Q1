@@ -1,0 +1,249 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+header {
+  width: 100%;
+  height: auto;
+  padding: 0.5rem 1rem;
+  color: beige;
+  background-color: rgb(170, 110, 138);
+}
+
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.header-title {
+  font-size: 1.2rem;
+}
+
+.api-endpoints {
+  font-size: 0.9rem;
+  align-self: last baseline;
+}
+
+main {
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-panel {
+  min-height: 4rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(225, 167, 163);
+}
+
+.search-field {
+  min-width: 80px;
+  width: auto;
+  height: 2rem;
+  color: gray;
+  padding: 0 0.5rem;
+  border-radius: 0.2rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button {
+  height: 2rem;
+  width: auto;
+  padding: 0 20px 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:disabled {
+  cursor: unset;
+}
+
+.result-panel {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: start;
+  padding: 10px;
+  background-color: rgb(248, 228, 211);
+  overflow: auto;
+}
+
+.result-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  overflow: auto;
+}
+
+.card-wrapper {
+  width: 20rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  text-align: left;
+  gap: 5px;
+  padding: 5px 10px;
+  color: rgb(57, 57, 57);
+  background-color: rgb(214, 249, 237);
+  border-radius: 10px;
+}
+
+footer {
+  width: 100%;
+  height: auto;
+  padding: 0.5rem 3rem;
+  color: beige;
+  background-color: rgb(108, 45, 75);
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-title {
+  font-size: 1rem;
+}
+
+.error-btn {
+  color: rgb(236, 212, 217);
+  background-color: crimson;
+}
+
+.error-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-wrapper {
+  width: fit-content;
+  height: fit-content;
+  padding: 2rem;
+  color: antiquewhite;
+  background-color: rgb(210, 31, 31);
+  border-radius: 15px;
+}
+
+.spinner-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.spinner-container {
+  top: 50vh;
+  left: 50vw;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 4rem;
+  /* background-color: rgba(186, 60, 155, 0.2); */
+  border-radius: 30px;
+  transform: translate(-50%, -150%);
+}
+
+.spinner-element {
+  width: 1rem;
+  height: 1rem;
+  transition: all 1s;
+}
+
+@keyframes color-change1 {
+  0% {
+    background-color: rgb(28, 96, 28);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes color-change2 {
+  0% {
+    background-color: rgba(28, 96, 28, 0.5);
+  }
+  50% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgb(28, 96, 28);
+  }
+}
+
+@keyframes color-change3 {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgb(28, 96, 28);
+  }
+}
+
+.spinner-element:nth-child(1) {
+  animation: color-change1 1s infinite;
+}
+
+.spinner-element:nth-child(2) {
+  animation: color-change2 1s infinite;
+}
+
+.spinner-element:nth-child(3) {
+  animation: color-change3 1s infinite;
+}
